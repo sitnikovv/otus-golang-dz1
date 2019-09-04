@@ -15,7 +15,7 @@ func main() {
 		fmt.Printf("Current time: %s\n", jodaTime.Format("dd.MM.YYYY HH:mm:ss:SSS", now))
 		fmt.Printf("Corrected time: %s\n", jodaTime.Format("dd.MM.YYYY HH:mm:ss:SSS", now.Add(response.ClockOffset)))
 	} else {
-		fmt.Println("Failure")
+		fmt.Println("Failure with reason: " + err.Error())
 	}
 
 	fmt.Println("\n\nSecond exercise:")
