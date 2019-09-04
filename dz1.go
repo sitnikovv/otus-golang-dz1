@@ -10,7 +10,7 @@ import (
 
 func main() {
 	fmt.Println("First exercise:")
-	if response, err := ntp.Query("0.beevik-ntp.pool.ntp.org"); err == nil {
+	if response, err := ntp.Query("pool.ntp.org"); err == nil {
 		now := time.Now()
 		fmt.Printf("Current time: %s\n", jodaTime.Format("dd.MM.YYYY HH:mm:ss:SSS", now))
 		fmt.Printf("Corrected time: %s\n", jodaTime.Format("dd.MM.YYYY HH:mm:ss:SSS", now.Add(response.ClockOffset)))
