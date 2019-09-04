@@ -2,15 +2,23 @@ package main
 
 import (
 	"fmt"
-	"strings"
 	"github.com/beevik/ntp"
+	"github.com/vjeantet/jodaTime"
+	"strings"
+	"time"
 )
 
 func main() {
-	if time, err := ntp.Time("pool.ntp.org"); err == nil {
-		fmt.Println(time)
+	fmt.Println("First exercise:")
+	if response, err := ntp.Query("0.beevik-ntp.pool.ntp.org"); err == nil {
+		now := time.Now()
+		fmt.Printf("Current time: %s\n", jodaTime.Format("dd.MM.YYYY HH:mm:ss:SSS", now))
+		fmt.Printf("Corrected time: %s\n", jodaTime.Format("dd.MM.YYYY HH:mm:ss:SSS", now.Add(response.ClockOffset)))
+	} else {
+		fmt.Println("Failure")
 	}
 
+	fmt.Println("\n\nSecond exercise:")
 	fmt.Println(unpack("a4bc2d5e"))
 	fmt.Println(unpack("abcd"))
 	fmt.Println(unpack("45"))
